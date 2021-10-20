@@ -2,19 +2,20 @@ package com.example.myquizz
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
 class DatabaseHandler(private val context: Context):SQLiteOpenHelper(context,"quizdb",null,1) {
     companion object{
-        val TABLE_NAME = "quiz_database"
-        val ID = "id"
-        val QUESTION = "question"
-        val OPTIONA = "optionA"
-        val OPTIONB = "optionB"
-        val OPTIONC = "optionC"
-        val OPTIOND = "optionD "
+        const val TABLE_NAME = "quiz_database"
+        const val ID = "id"
+        const val QUESTION = "question"
+        const val OPTIONA = "optionA"
+        const val OPTIONB = "optionB"
+        const val OPTIONC = "optionC"
+        const val OPTIOND = "optionD"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -78,6 +79,39 @@ class DatabaseHandler(private val context: Context):SQLiteOpenHelper(context,"qu
             Toast.makeText(context, "Error while deleting", Toast.LENGTH_SHORT).show()
 
         }
+    }
+
+    fun getQuestions():MutableList<QuizModal>{
+        val listQuiz:MutableList<QuizModal> = mutableListOf<QuizModal>()
+        val db:SQLiteDatabase = readableDatabase
+
+        val query = "select * from $TABLE_NAME"
+        val cursor:Cursor = db.rawQuery(query, null)
+
+        if (cursor!= null && cursor.count>0){
+            cursor.moveToFirst()
+            do {
+                var idIndex:Int =cursor.getColumnIndex(ID)
+                var questionIndex:Int =cursor.getColumnIndex(QUESTION)
+                var optionAIndex:Int =cursor.getColumnIndex(OPTIONA)
+                var optionBIndex:Int =cursor.getColumnIndex(OPTIONB)
+                var optionCIndex:Int =cursor.getColumnIndex(OPTIONC)
+                var optionDIndex:Int =cursor.getColumnIndex(OPTIOND)
+
+                val id: Int = cursor.getInt(idIndex)
+                val question:String= cursor.getString(questionIndex)
+                val optionA:String = cursor.getString(optionAIndex)
+                val optionB:String = cursor.getString(optionBIndex)
+                val optionC:String = cursor.getString(optionCIndex)
+                val optionD:String = cursor.getString(optionDIndex)
+
+                val quizModal = QuizModal(id, question, optionA, optionB, optionC, optionD)
+                listQuiz.add(quizModal)
+
+            }while (cursor.moveToNext())
+
+        }
+        return listQuiz
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

@@ -23,58 +23,116 @@
             android:layout_height="match_parent">
 
             <ImageButton
+
+                android:id="@+id/ivDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_baseline_delete_24"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/questionCard"
+                android:layout_below="@+id/ivDelete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="question"
+                    android:layout_margin="5dp"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvOptionA"
+                android:layout_below="@+id/questionCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                >
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/tvOptionA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="optionA"
+                    android:drawableLeft="@drawable/ic_baseline_check_box_24"
+                    android:clickable="true"
+                    android:drawablePadding="5dp"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cvOptionA"
+                android:layout_margin="5dp"
+                android:id="@+id/cvOptionB">
+                <TextView
+                    android:id="@+id/tvOptionB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="optionB"
+                    android:layout_margin="5dp"
+                    android:drawableLeft="@drawable/ic_baseline_check_box_24"
+                    android:clickable="true"
+                    android:drawablePadding="5dp"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvOptionC"
+                android:layout_below="@+id/cvOptionB"
+                android:layout_width="match_parent"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvOptionC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="optionC"
+                    android:drawableLeft="@drawable/ic_baseline_check_box_24"
+                    android:clickable="true"
+                    android:drawablePadding="5dp"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
+           <androidx.cardview.widget.CardView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/cvOptionD"
+               android:layout_below="@+id/cvOptionC"
+               android:layout_margin="5dp"
+               >
+               <TextView
+                   android:id="@+id/tvOptionD"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="optionD"
+                   android:drawableLeft="@drawable/ic_baseline_check_box_24"
+                   android:clickable="true"
+                   android:drawablePadding="5dp"
+                   android:layout_margin="5dp"
+                   android:textSize="18sp" />
+           </androidx.cardview.widget.CardView>
+
+            <ImageButton
                 android:id="@+id/ivEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/cvOptionD"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_baseline_edit_24" />
-
-            <TextView
-                android:id="@+id/tvQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ivEdit"
-                android:text="question"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tvOptionA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvQuestion"
-                android:text="optionA"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tvOptionB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvOptionA"
-                android:text="optionB"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tvOptionC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvOptionB"
-                android:text="optionC"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tvOptionD"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvOptionC"
-                android:text="optionD"
-                android:textSize="18sp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvOptionD"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/ic_baseline_delete_24" />
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_baseline_edit_24"
+                 />
         </RelativeLayout>
 
 
